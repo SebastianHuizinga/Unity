@@ -10,13 +10,16 @@ public class TurretScript : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform turretRotationPoint;
     [SerializeField] private LayerMask enemyMask;
-    
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firingPoint;
+
     [Header("Attributes")]
     [SerializeField] private float targetingRange = 5f;
     [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private float shotsPerSecond = 1f;
 
     private Transform target;
-
+    private float timeUntilShoot;
 
     private void OnDrawGizmosSelected() {
         Handles.color = Color.cyan;
@@ -40,12 +43,24 @@ public class TurretScript : MonoBehaviour
 
        if (!CheckTargetIsInRange()){
             target = null;
+       }else{
+        timeUntilShoot += Time.deltaTime;
+        if(timeUntilShoot >= 1f/shotsPerSecond){
+            Shoot();
+            timeUntilShoot = 0f;
+        }
+
+
        }
 
     }
 
 
-
+    private void Shoot(){
+       GameObject arrowObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
+       Arrow arrowScript = arrowObj.GetComponent<Arrow>();
+       arrowScript.SetTarget(target);
+    }
 
     private void FindTarget(){
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);

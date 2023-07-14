@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1636827248356988268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 48504501213925298}
+  m_Layer: 0
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &48504501213925298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636827248356988268}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.414, y: 0.726, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 68659567971582230}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1684465630137541199
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,12 +139,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7702499448828705199}
-  m_LocalRotation: {x: -0.0000000013295766, y: -0.00000028311896, z: -0.004696127, w: 0.99998903}
+  m_LocalRotation: {x: 0, y: 0, z: -0.00469499, w: 0.999989}
   m_LocalPosition: {x: 0.02814999, y: 2.99724, z: -2.2765123e-13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5312988498697259855}
+  - {fileID: 48504501213925298}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.538}
@@ -133,8 +165,11 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 8
+  bulletPrefab: {fileID: 1166767963821939683, guid: 60e5e6bca660d2d478b127f544b3aece, type: 3}
+  firingPoint: {fileID: 48504501213925298}
   targetingRange: 3.5
   rotationSpeed: 500
+  shotsPerSecond: 1
 --- !u!1 &8573087389522889530
 GameObject:
   m_ObjectHideFlags: 0
