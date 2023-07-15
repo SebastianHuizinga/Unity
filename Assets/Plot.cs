@@ -23,8 +23,14 @@ public class Plot : MonoBehaviour
     private void OnMouseDown() {
         if(tower != null) return;
 
-         GameObject towerTemp = BuildManager.main.GetSelectedTower();
-         tower = Instantiate(towerTemp, transform.position, Quaternion.identity);   
+         Tower towerTemp = BuildManager.main.GetSelectedTower();
+        if (towerTemp.cost > LevelManager.main.money)
+        {
+            Debug.Log("too expensive");
+            return;
+        }
+        LevelManager.main.SpendMoney(towerTemp.cost);
+         tower = Instantiate(towerTemp.prefab, transform.position, Quaternion.identity);   
     }
     // Start is called before the first frame update
     void Start()
